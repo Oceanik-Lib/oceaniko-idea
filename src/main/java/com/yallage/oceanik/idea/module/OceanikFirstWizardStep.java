@@ -23,12 +23,10 @@ public class OceanikFirstWizardStep extends ModuleWizardStep {
     private JRadioButton spigotRecommendedRadioButton;
     private JRadioButton paperRadioButton;
     private JLabel infoLabel;
-    private JComboBox comboBox1;
     private OceanikModuleConfig config;
 
     public OceanikFirstWizardStep(OceanikModuleConfig config) {
         this.config = config;
-        SdkVersionUtil.
         craftBukkitRadioButton.addActionListener(e -> {
             if (craftBukkitRadioButton.isSelected()) {
                 infoLabel.setText(

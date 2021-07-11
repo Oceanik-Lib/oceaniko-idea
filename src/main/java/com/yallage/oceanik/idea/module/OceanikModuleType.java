@@ -2,6 +2,7 @@ package com.yallage.oceanik.idea.module;
 
 import com.intellij.ide.util.projectWizard.ModuleWizardStep;
 import com.intellij.ide.util.projectWizard.WizardContext;
+import com.intellij.openapi.module.JavaModuleType;
 import com.intellij.openapi.module.ModuleType;
 import com.intellij.openapi.module.ModuleTypeManager;
 import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class OceanikModuleType extends ModuleType<OceanikModuleBuilder> {
+public class OceanikModuleType extends JavaModuleType {
     private static final String ID = "OCEANIK_MODULE_TYPE";
     private OceanikModuleConfig config = new OceanikModuleConfig();
     public OceanikModuleType() {
