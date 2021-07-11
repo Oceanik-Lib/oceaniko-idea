@@ -12,6 +12,7 @@ import javax.swing.*;
 
 public class OceanikModuleType extends ModuleType<OceanikModuleBuilder> {
     private static final String ID = "OCEANIK_MODULE_TYPE";
+    private OceanikModuleConfig config = new OceanikModuleConfig();
     public OceanikModuleType() {
         super(ID);
     }
@@ -43,15 +44,4 @@ public class OceanikModuleType extends ModuleType<OceanikModuleBuilder> {
     public Icon getNodeIcon(@Deprecated boolean b) {
         return Assets.Icons.OCEANIK;
     }
-
-    @NotNull
-    @Override
-    public ModuleWizardStep[] createWizardSteps(@NotNull WizardContext wizardContext,
-                                                @NotNull OceanikModuleBuilder moduleBuilder,
-                                                @NotNull ModulesProvider modulesProvider) {
-        return new ModuleWizardStep[]{
-                new OceanikSecondWizardStep()
-        };
-    }
-
 }
