@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>com.yallage.oceaniko-idea</id>
+    <name>Oceaniko Development Tools</name>
+    <vendor url="http://github.com/Yallage">Yallage</vendor>
+    <depends>com.demonwav.minecraft-dev</depends>
+
+    <description><![CDATA[
+    A Intellij IDEA plugin for developing Minecraft Oceaniko (Oceanik plugins). <br/>
+    Features: <br/>
+    <pl>
+    <li>Quickly create a new Oceaniko project.</li>
+    <li>is there anything else?</li>
+    </pl>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.gradle</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <moduleBuilder builderClass="com.yallage.oceanik.idea.module.OceanikModuleBuilder"
+                       id="OCEANIK_MODULE_BUILDER"/>
+        <moduleType id="OCEANIK_MODULE_TYPE" implementationClass="com.yallage.oceanik.idea.module.OceanikModuleType"/>
+
+        <!-- Add your extensions here -->
+        <fileTemplateGroup implementation="com.yallage.oceanik.idea.util.FileTemplates"/>
+
+    </extensions>
+
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
