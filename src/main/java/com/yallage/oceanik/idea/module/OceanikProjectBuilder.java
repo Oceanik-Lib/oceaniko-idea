@@ -22,41 +22,28 @@ public class OceanikProjectBuilder {
 
     public void build() {
         VirtualFile root = project.getBaseDir();
-        try {
-            // 创建目录
-            VfsUtil.createDirectoryIfMissing(root, "gradle/wrapper");
-            VfsUtil.createDirectoryIfMissing(root, "src/main/java");
-            VfsUtil.createDirectoryIfMissing(root, "src/main/resources");
-            VfsUtil.createDirectoryIfMissing(root, "src/main/java/com/yallage/oceanik/loader/util");
-            VirtualFile packagePath = VfsUtil.createDirectoryIfMissing(root, "src/main/java" + "/"
-                    + config.groupId.replaceAll("\\.","/") + "/" + config.artifactId);
-            // 向目录追加文件
-            this.createFileIfMissing(root.getPath(), ".gitignore");
-            this.createFileIfMissing(root.getPath(), "build.gradle");
-            this.createFileIfMissing(root.getPath(), "settings.gradle");
-            // 资源文件夹的三个文件
-            this.createFileIfMissing(root.getPath() + "/src/main/resources", "plugin.yml");
-            this.createFileIfMissing(root.getPath() + "/src/main/resources", "oceanik.yml");
-            this.createFileIfMissing(root.getPath() + "/src/main/resources", "oceanik-loader.yml");
-            // 两个特殊类文件
-            this.createFileIfMissing(root.getPath() + "/src/main/java/com/yallage/oceanik/loader/util","OceanikLoader.java");
-            this.createFileIfMissing(root.getPath() + "/src/main/java/com/yallage/oceanik/loader/util","VersionInfo.java");
-            // gradle 的 wrapper
-            this.createFileIfMissing(root.getPath() + "/gradle/wrapper", "gradle-wrapper.jar");
-            this.createFileIfMissing(root.getPath() + "/gradle/wrapper", "gradle-wrapper.properties");
-            // 插件主类
-            this.createFileIfMissing(packagePath.getPath(),"OceanikMain.java");
-            this.createFileIfMissing(packagePath.getPath(),this.captureName(config.artifactId) + ".java");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void createFileIfMissing(String path, String file){
-        FileTemplate fileTemplate = manger.getTemplate(file);
-        File target = new File(path + "/" + file);
         try {
-            target.createNewFile();
+            // 创建根目录下的文件
+            root.createChildData(this,".gitignore");
+            root.createChildData(this,"build.gradle");
+            root.createChildData(this,"settings.gradle");
+            // 创建目录
+            VirtualFile wrapper = VfsUtil.createDirectoryIfMissing(root, "gradle/wrapper");
+            wrapper.createChildData(this,"gradle-wrapper.jar");
+            wrapper.createChildData(this,"gradle-wrapper.properties");
+            VirtualFile java = VfsUtil.createDirectoryIfMissing(root, "src/main/java");
+            VirtualFile resources = VfsUtil.createDirectoryIfMissing(root, "src/main/resources");
+            resources.createChildData(this,"plugin.yml");
+            resources.createChildData(this,"oceanik.yml");
+            resources.createChildData(this,"oceanik-loader.yml");
+            VirtualFile util = VfsUtil.createDirectoryIfMissing(root, "src/main/java/com/yallage/oceanik/loader/util");
+            util.createChildData(this,"OceanikLoader.java");
+            util.createChildData(this,"VersionInfo.java");
+            VirtualFile main = VfsUtil.createDirectoryIfMissing(root, "src/main/java" + "/"
+                    + config.groupId.replaceAll("\\.","/") + "/" + config.artifactId);
+            main.createChildData(this,"OceanikMain.java");
+            main.createChildData(this,this.captureName(config.artifactId) + ".java");
         } catch (IOException e) {
             e.printStackTrace();
         }
