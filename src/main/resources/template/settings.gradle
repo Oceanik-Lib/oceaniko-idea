@@ -1,2 +1,4 @@
+package template
+
 rootProject.name = 'test-project'
 

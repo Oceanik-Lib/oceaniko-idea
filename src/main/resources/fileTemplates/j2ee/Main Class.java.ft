@@ -1,7 +1,0 @@
-package ${PACKAGE};
-
-import com.yallage.oceanik.plugin.OceanikPlugin;
-
-public class ${CLASS_NAME} extends OceanikPlugin {
-
-}

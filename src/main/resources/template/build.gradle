@@ -1,11 +1,13 @@
+package template
+
 plugins {
     id 'java'
     id 'idea'
     id 'io.freefair.lombok' version '6.0.0-m2'
 }
 
-group '${GROUP_ID}'
-version '${PLUGIN_VERSION}'
+group 'com.yallage.oceanik'
+version '1.0.0-alpha.1'
 
 repositories {
     mavenCentral()
