@@ -1,4 +1,4 @@
-package org.example;
+package {groupId}.{artifactId};
 
 import com.yallage.oceanik.loader.OceanikLoader;
 import com.yallage.oceanik.plugin.OPluginManager;

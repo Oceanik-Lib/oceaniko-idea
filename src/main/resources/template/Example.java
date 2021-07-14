@@ -1,9 +1,9 @@
-package org.example;
+package {groupId}.{artifactId};
 
 import com.yallage.oceanik.plugin.OceanikPlugin;
 
 /**
  * @author Milkory
  */
-public class Example extends OceanikPlugin {
+public class {mainClass} extends OceanikPlugin {
 }
