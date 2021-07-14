@@ -1,1 +1,1 @@
-main: {groupId}.{artifactId}.{mainClass}
+main: {mainClass}

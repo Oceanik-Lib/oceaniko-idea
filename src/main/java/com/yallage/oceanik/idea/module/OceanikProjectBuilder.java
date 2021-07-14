@@ -26,7 +26,7 @@ public class OceanikProjectBuilder {
             // 创建根目录下的文件
             root.createChildData(this, ".gitignore").setBinaryContent(manager.getTemplate("gitignore"));
             root.createChildData(this, "build.gradle").setBinaryContent(manager.getTemplate("build.gradle"));
-            root.createChildData(this, "settings.gradle").setBinaryContent(manager.getTemplate("settings.gradle"));
+            root.createChildData(this, "settings.gradle").setBinaryContent(manager.getTemplate("settings.gradle",map.getConfigMap()));
             // 资源包
             VirtualFile resources = VfsUtil.createDirectoryIfMissing(root, "src/main/resources");
             resources.createChildData(this, "plugin.yml").setBinaryContent(manager.getTemplate("plugin.yml",map.getConfigMap()));
@@ -41,8 +41,8 @@ public class OceanikProjectBuilder {
                     + config.groupId.replaceAll("\\.", "/") + "/" + config.artifactId);
             main.createChildData(this, "OceanikMain.java")
                     .setBinaryContent(manager.getTemplate("OceanikMain.java",map.getConfigMap()));
-            main.createChildData(this, config.mainClass)
-                    .setBinaryContent(manager.getTemplate(this.captureName("Example.java"),map.getConfigMap()));
+            main.createChildData(this, this.captureName(config.artifactId) + ".java")
+                    .setBinaryContent(manager.getTemplate("Example.java",map.getConfigMap()));
 
         } catch (IOException e) {
             e.printStackTrace();

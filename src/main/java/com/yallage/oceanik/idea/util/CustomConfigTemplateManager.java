@@ -13,6 +13,7 @@ public class CustomConfigTemplateManager {
         Map<String,String> map = new HashMap<>();
         map.put("{groupId}",config.groupId);
         map.put("{artifactId}",config.artifactId);
+        map.put("{main}",this.captureName(config.artifactId));
         map.put("{mainClass}",config.mainClass);
         map.put("{version}",config.version);
         map.put("{pluginName}",config.pluginName);
@@ -25,5 +26,10 @@ public class CustomConfigTemplateManager {
         map.put("{dependencies}",config.dependencies.toString());
         map.put("{softDependencies}",config.softDependencies.toString());
         return map;
+    }
+    // 首字母大写
+    private String captureName(String name) {
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        return name;
     }
 }
