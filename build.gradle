@@ -4,11 +4,12 @@ plugins {
     id 'org.jetbrains.intellij' version '1.1.2'
 }
 
-group 'com.yallage'
+group 'com.yallage.oceanik'
 version '1.0.0'
 
 repositories {
     mavenCentral()
+    maven { url 'https://maven.aliyun.com/repository/public/' }
 }
 
 dependencies {
@@ -21,8 +22,10 @@ intellij {
     plugins = ["com.demonwav.minecraft-dev:2021.1-1.5.12", "java", "gradle", "Groovy"]
     version = '2021.1.3'
 }
+
 patchPluginXml {
 }
+
 test {
     useJUnitPlatform()
 }

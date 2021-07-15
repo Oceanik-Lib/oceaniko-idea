@@ -57,17 +57,17 @@ public class CustomFileTemplateManager {
      * @return 字节数组
      */
     private byte[] replaceBytes(byte[] bytes, byte[] byteSource, byte[] byteTarget) {
-        System.out.println("Data: " + Arrays.toString(bytes) + " Source: " + Arrays.toString(byteSource) + " Target: " + Arrays.toString(byteTarget));
+        if (byteSource.length == 0) return bytes;
         for (int i = 0; i < bytes.length; i++) {
-            boolean bl = true;//从当前下标开始的字节是否与欲替换字节相等;
+            if (i + byteSource.length > bytes.length) break;
+            boolean replace = true; //从当前下标开始的字节是否与欲替换字节相等
             for (int j = 0; j < byteSource.length; j++) {
-                if (i + j < bytes.length && bytes[i + j] == byteSource[j]) {
-                    bl = true;
-                } else {
-                    bl = false;
+                if (bytes[i + j] != byteSource[j]) {
+                    replace = false;
+                    break;
                 }
             }
-            if (bl) {
+            if (replace) {
                 System.arraycopy(byteTarget, 0, bytes, i, byteTarget.length);
             }
         }
